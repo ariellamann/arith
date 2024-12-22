@@ -1,0 +1,80 @@
+Identifies you and your programming partner by name
+
+    Ariella Mann {amann04}
+
+Briefly explains your architecture (i.e. which files do what)
+
+
+    compress40.c:  Implementation file of the compress and decompress programs
+
+    compvideo.c/compvideo.h: Holds all the functions which compress to and from
+                             component video information. 
+
+    DCT.c/DCT.h: All the functions and steps required for discrete cosine 
+                 transformation in both compression and decompression. 
+
+    quantizaiton.c/quantizaiton.h: Functions for quantization of the bit field
+                                   elements. For both compression and 
+                                   decompression. 
+
+    packing.c/packing.h: Functions needed to actually pack bit fields into 
+                         bitwords. 
+
+    bitpack.c: Implementation of the bitpack interface
+
+    RGBStruct.h: Float values RGB struct
+    CVStruct.h:  Component video struct
+    floatsStruct.h: Unquantized elements struct
+    quantStruct.h: Quantized bit field struct 
+
+    testing.c: A testing driver file to test the functions of bitpack.c
+
+    
+    Each corresponding step of the compression and decompression program 
+    is stored in its own .c and .h file. In addition to that, each struct
+    used to store information through the program is its own file as to 
+    abstract all of that information from the user. The user of any of these 
+    files does not need to know what sturct types are being used, they only 
+    need to know what the functions can do and how they are used, so 
+    because of that, all the structs are in their own .h files and they are
+    only included in .c files for steps which use that specific struct. 
+    The steps of compression/decompression are split up into making component
+    video, discrete cosine transformation, quantization, and packing. Each of 
+    these are one large step in the compression/decompression and each do 
+    their own thing which is why they are each in their own .c and .h files. 
+    Compress40.c reads in information from the file for both steps and prints
+    out the final product for each step, but it does not actually compute any 
+    of the steps of compression/decompression. 
+
+
+Acknowledges help you may have received or collaborative work you may have 
+undertaken with others:
+
+    I worked with Austin Kee {akee01} on this project up until bitpack.c 
+    interface, meaning the compression and coressponding decompression steps
+    up until the words begin to actually get packed. 
+    I also recieved a lot of help from TAs at office hours (shout out Teddy and
+    Andrew for being extremley helpful today in fixing a very annoying bug).
+
+Identifies what has been correctly implemented and what has not
+
+    I have correctly implemented the ppmdiff program to identify how 
+    different two ppm images are as well as the compress and decompress 
+    programs which can compress an image to 32-bit bitwords and 
+    decompress those bitwords to restore it to the original image. 
+
+    NOTE******: I am aware that I am losing memory on both steps. There is
+    both direct and indirecty memory loss. The direct memory loss seems to be 
+    happening in relations the Pnm_ppm in both steps and althougth I tried many
+    combinations of deleting it, nothing worked. In both compression and 
+    decompression I lose 24 bytes in 1 block. 
+
+Says approximately how many hours you have spent analyzing the problems 
+posed in the assignment: 
+
+    10
+
+Says approximately how many hours you have spent solving the problems 
+after your analysis:
+
+    25
